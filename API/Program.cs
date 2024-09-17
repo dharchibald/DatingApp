@@ -1,5 +1,6 @@
 using System.Text;
 using API.Extensions;
+using API.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -22,6 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors((x) => {
     x.AllowAnyHeader()
